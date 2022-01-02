@@ -1,0 +1,11 @@
+{
+  "expo": {
+    "name": "myItinerary-Mobile-Lamothe",
+    "slug": "myItinerary-Mobile-Lamothe",
+    "version": "1.0.0",
+    "assetBundlePatterns": [
+      "**/*"
+    ]
+  },
+  "name": "myItinerary-Mobile-Lamothe"
+}
