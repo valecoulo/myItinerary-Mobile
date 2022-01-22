@@ -59,9 +59,7 @@ const styles = StyleSheet.create({
     textCity: {
         color: '#fff',
         fontSize: 20,
-        flex: 1,
-        justifyContent: 'center',
-        alignItems: 'center',
+        fontWeight: 'bold',
     },
     backgroundHome: {
         width: 400,

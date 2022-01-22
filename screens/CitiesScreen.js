@@ -1,5 +1,5 @@
 import styles from '../styles';
-import { Text, View, ScrollView, ImageBackground, Image, Keyboard } from "react-native";
+import { Text, View, ScrollView, ImageBackground, ActivityIndicator, TouchableOpacity, TextInput } from "react-native";
 import citiesActions from '../redux/actions/citiesActions';
 import { connect } from "react-redux"
 import React, { useEffect } from 'react';
@@ -38,23 +38,38 @@ const CitiesScreen = (props) => {
     return (
         <ScrollView style={{backgroundColor: 'black'}}>
             <View style={styles.containerCities}>
+                <View style={{borderBottomWidth: 1, borderColor: 'white', width: '50%',alignItems: 'center', margin: '5%'}}>
+                <TextInput placeholder="Search for a city..." onChange={(e) => props.getFiltered(cities, e.nativeEvent.text)} placeholderTextColor={'orange'} style={{color: 'white'}} />
+                </View>
                 {/* <Search placeholder="Enter a city... "
                     handleChange={e => this.props.getFiltered(cities, e.target.value)} /> */}
                 {cities.length === 0
-                    ? <Text style={{margin: '40%', color: 'white'}}>LOADING...</Text>
+                    ? <>
+                    <View style={{flex: 1, justifyContent: 'center', alignItems: 'center', margin: '20%'}}>
+                        <ActivityIndicator color='orange' size="large" />
+                    </View>
+                      </>
                     : (citiesFiltered.length > 0
                         ? citiesFiltered.map((city , index) => {
                             return (
                                 // <NavLink to={`/city/${city._id}`}>
-                                    <View key={index} >
-                                        <ImageBackground style={{width:200, height:200,marginTop: 30, justifyContent: 'center', alignItems:'center'}} source={{uri: city.image}} >
-                                            <Text style={styles.textCity}>{city.cityName}</Text>
+                                <View key={index} style={{}} >
+                                    <ImageBackground style={{width:200, height:200,marginBottom: 30,  alignItems:'center'}} source={{uri: city.image}} >
+                                        <View style={{flex: 1}}>
+                                        <Text style={styles.textCity}>{city.cityName}</Text>
+                                        </View>
                                         </ImageBackground>
                                     </View>
                                 // </NavLink>
                                 )
                         })
-                        : <Text className="text-light">NO CITIES FOUND</Text>)}
+                        : <View style={{padding: '2%', backgroundColor: 'white', margin: '10%', borderRadius: 4, width: '50%', alignItems: 'center'}}>
+                            <Text style={{color: 'black'}}>NO CITIES FOUND</Text>
+                           </View>
+                           )}
+                        <TouchableOpacity style={{padding: '2%', backgroundColor: 'orange', margin: '10%', borderRadius: 3}} onPress={() => props.navigation.navigate('Home')}>
+                            <Text style={{color: 'white', fontSize: 18, fontWeight: 'bold'}}>Back to Home</Text>
+                        </TouchableOpacity>
             </View>
         </ScrollView>
     )

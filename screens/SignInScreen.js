@@ -55,9 +55,7 @@ const SignInScreen = (props) => {
 
     return (
     <>
-    <TouchableWithoutFeedback onPress={() => {
-            Keyboard.dismiss()
-        }}>
+    
         <ImageBackground source={backgroundImage} resizeMode="cover" style={styles.backgroundImageSignIn}>
             <View style={styles.containerForm}>
                 <View style={styles.formBackground}>
@@ -73,7 +71,6 @@ const SignInScreen = (props) => {
                 </View>
             </View>
         </ImageBackground>
-        </TouchableWithoutFeedback>
     </>
     )
 }
