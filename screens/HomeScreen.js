@@ -4,7 +4,14 @@ import SignUpScreen from './SignUpScreen';
 import SignInScreen from './SignInScreen';
 import CitiesScreen from './CitiesScreen';
 import authActions from '../redux/actions/authActions'
-import { connect } from "react-redux"
+import { connect } from "react-redux";
+import CustomDrawer from '../components/CustomDrawer';
+import { Entypo } from '@expo/vector-icons';
+import { Feather } from '@expo/vector-icons';
+import { AntDesign } from '@expo/vector-icons'
+import { FontAwesome5 } from '@expo/vector-icons';
+import { Ionicons } from '@expo/vector-icons';
+
 
 
 const Drawer = createDrawerNavigator(); 
@@ -39,18 +46,28 @@ const HomeScreen = ({ navigation }) => {
 
 const HomeNavigate = (props) => {
     return (
-        <Drawer.Navigator initialRouteName="Home" screenOptions={{
+        <Drawer.Navigator drawerContent={props => <CustomDrawer {...props} />} initialRouteName="Home" screenOptions={{
             headerShown: true,
             }}>
 
             <Drawer.Screen 
                 name='Home' 
                 component={HomeScreen}
+                options={{
+                    drawerIcon: () => {
+                      return <Entypo name="home" size={22} color="black" />
+                    }
+                  }}
             />
 
             <Drawer.Screen 
                 name='Cities' 
                 component={CitiesScreen}
+                options={{
+                    drawerIcon: () => {
+                       return <FontAwesome5 name="city" size={22} color="black" />
+                    }
+                  }}
             />
 
             {props.userName ?
@@ -59,6 +76,11 @@ const HomeNavigate = (props) => {
             <Drawer.Screen 
             name='Sign In' 
             component={SignInScreen}
+            options={{
+                drawerIcon: () => {
+                    return <Ionicons name="person" size={22} color="black" />
+                }
+              }}
             />
             }
 
@@ -68,6 +90,11 @@ const HomeNavigate = (props) => {
             <Drawer.Screen 
                 name='Sign Up' 
                 component={SignUpScreen}
+                options={{
+                    drawerIcon: () => {
+                     return <Ionicons name="person-add" size={24} color="black" />
+                    }
+                  }}
             />
             }
             

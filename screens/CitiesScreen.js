@@ -38,8 +38,8 @@ const CitiesScreen = (props) => {
     return (
         <ScrollView style={{backgroundColor: 'black'}}>
             <View style={styles.containerCities}>
-                <View style={{borderBottomWidth: 1, borderColor: 'white', width: '50%',alignItems: 'center', margin: '5%'}}>
-                <TextInput placeholder="Search for a city..." onChange={(e) => props.getFiltered(cities, e.nativeEvent.text)} placeholderTextColor={'orange'} style={{color: 'white'}} />
+                <View style={{borderBottomWidth: 1, borderColor: 'orange', width: '50%',alignItems: 'center', margin: '10%'}}>
+                <TextInput placeholder="Search for a city..." onChange={(e) => props.getFiltered(cities, e.nativeEvent.text)} placeholderTextColor={'white'} style={{color: 'white', fontSize: 17}} />
                 </View>
                 {/* <Search placeholder="Enter a city... "
                     handleChange={e => this.props.getFiltered(cities, e.target.value)} /> */}
@@ -50,12 +50,12 @@ const CitiesScreen = (props) => {
                     </View>
                       </>
                     : (citiesFiltered.length > 0
-                        ? citiesFiltered.map((city , index) => {
+                        ? citiesFiltered.map((city, index) => {
                             return (
                                 // <NavLink to={`/city/${city._id}`}>
                                 <View key={index} style={{}} >
-                                    <ImageBackground style={{width:200, height:200,marginBottom: 30,  alignItems:'center'}} source={{uri: city.image}} >
-                                        <View style={{flex: 1}}>
+                                    <ImageBackground style={{width:200, height:200,marginBottom: 30,borderRadius: 30,  alignItems:'center'}} source={{uri: city.image}} >
+                                        <View style={{backgroundColor: 'rgba(0, 0, 0, 0.550);', width: '90%', alignItems:'center', justifyContent: 'center', borderRadius: 2.5, marginTop:'40%'}}>
                                         <Text style={styles.textCity}>{city.cityName}</Text>
                                         </View>
                                         </ImageBackground>

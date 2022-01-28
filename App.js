@@ -1,8 +1,5 @@
 import React from 'react';
-import { View } from 'react-native';
 import {Provider} from 'react-redux'
-import styles from './styles';
-import HomeScreen from './screens/HomeScreen';
 import {createStore, applyMiddleware} from 'redux'
 import rootReducer from "./redux/reducer/rootReducer";
 import thunk from "redux-thunk"
@@ -20,7 +17,7 @@ export default function App() {
       <NavigationContainer>
         < StackNavigation />
       </NavigationContainer>
-    <FlashMessage position="top" />
+      <FlashMessage position="top" style={{alignSelf: 'center', width: '95%', flex: 1, alignItems: 'center'}} />
     </Provider>
   );
 }
