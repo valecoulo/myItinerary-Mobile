@@ -5,8 +5,8 @@ const itinerariesActions = {
         return async (dispatch) => {
            let response = await axios.get('https://myitinerary-lamothe.herokuapp.com/api/itinerarycity/' + id) 
            let infoItinerary = response.data.response
+           console.log('actionItinerary:',infoItinerary);
            dispatch({ type: 'ONE_ITINERARY', payload: infoItinerary })   
-           
          }
       },
       sendComment: (commentInfo)=>{

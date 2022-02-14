@@ -30,11 +30,6 @@ const CitiesScreen = (props) => {
 
     const {cities, citiesFiltered } = props;
 
-    console.log(props);
-
-
-    console.log('CITIES:', cities)
-
     return (
         <ScrollView style={{backgroundColor: 'black'}}>
             <View style={styles.containerCities}>
@@ -53,13 +48,15 @@ const CitiesScreen = (props) => {
                         ? citiesFiltered.map((city, index) => {
                             return (
                                 // <NavLink to={`/city/${city._id}`}>
-                                <View key={index} style={{}} >
-                                    <ImageBackground style={{width:200, height:200,marginBottom: 30,borderRadius: 30,  alignItems:'center'}} source={{uri: city.image}} >
-                                        <View style={{backgroundColor: 'rgba(0, 0, 0, 0.550);', width: '90%', alignItems:'center', justifyContent: 'center', borderRadius: 2.5, marginTop:'40%'}}>
+                                <TouchableOpacity key={city._id} onPress={() => props.navigation.navigate('OneCity', {params: city._id})}>
+                                <View style={{}} >
+                                    <ImageBackground style={{width:200, height:200,marginBottom: 30,borderRadius: 30,  alignItems:'center',borderRadius: 10}} source={{uri: city.image}} imageStyle={{ borderRadius: 6}} >
+                                        <View style={{backgroundColor: 'black', width: '90%', alignItems:'center', justifyContent: 'center', borderRadius: 2.5, marginTop:'40%'}}>
                                         <Text style={styles.textCity}>{city.cityName}</Text>
                                         </View>
                                         </ImageBackground>
                                     </View>
+                                    </TouchableOpacity>
                                 // </NavLink>
                                 )
                         })
